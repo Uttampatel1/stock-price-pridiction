@@ -32,8 +32,10 @@ def create_app(config_class=Config):
         from stockapp.users.routes import users
         from stockapp.main.routes import main
         from stockapp.errors.handlers import errors
+        from stockapp.charts import charts
         app.register_blueprint(users)
         app.register_blueprint(main)
         app.register_blueprint(errors)
+        app.register_blueprint(charts)
         db.create_all()
         return app

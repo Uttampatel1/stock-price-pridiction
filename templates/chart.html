@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stock Price Chart</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <style>
+    .container {
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    #chart {
+      height: 400px;
+      margin-bottom: 50px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Stock Price Chart</h1>
+    <form method="post">
+      <div class="form-group row">
+        <label for="ticker" class="col-sm-2 col-form-label">Ticker:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="ticker" name="ticker" placeholder="Enter a stock ticker">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="start" class="col-sm-2 col-form-label">Start Date:</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="start" name="start">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="end" class="col-sm-2 col-form-label">End Date:</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="end" name="end">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="period" class="col-sm-2 col-form-label">Period:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="period" name="period">
+            <option value="">--Select a period--</option>
+            <option value="1mo">1 Month</option>
+            <option value="3mo">3 Months</option>
+            <option value="6mo">6 Months</option>
+            <option value="1y">1 Year</option>
+            <option value="2y">2 Years</option>
+            <option value="5y">5 Years</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="submit" class="btn btn-primary btn-block" value="Create Chart">
+        </div>
+      </div>
+    </form>
+    {% if chart_data %}
+    <div id="chart"></div>
+    <script>
+      var chartData = {{ chart_data|safe }};
+      Highcharts.chart('chart', chartData);
+    </script>
+    {% endif %}
+</div>
+</body>
+
+</html>
