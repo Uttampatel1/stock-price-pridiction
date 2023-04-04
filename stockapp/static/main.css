@@ -159,3 +159,11 @@ a:hover {
   color: #33a2e1;
   text-decoration: none;
 }
+#chart {
+  height: 400px;
+  margin-bottom: 50px;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+}

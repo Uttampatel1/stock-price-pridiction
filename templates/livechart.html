@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0"></script>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script>
+      const apiKey = 'a645fee24b4c7ff5222ad0b26aa9b8819d6788df'; // Replace with your Tiingo API key
+      const symbol = 'AAPL'; // Replace with the stock symbol you want to display
+      
+      // Get the stock data from Tiingo API
+      fetch(`https://api.tiingo.com/iex/?tickers=${symbol}&token=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+          // Extract the dates and closing prices from the data
+          const dates = data[0].date.slice(0, 30);
+          const prices = data[0].close.slice(0, 30);
+
+          // Create the chart using Chart.js
+          const ctx = document.getElementById('myChart').getContext('2d');
+          const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: dates,
+              datasets: [{
+                label: `${symbol} Stock Price`,
+                data: prices,
+                borderColor: 'blue',
+                fill: false,
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: false
+                }
+              }
+            }
+          });
+        })
+        .catch(error => console.error(error));
+    </script>
+  </body>
+</html>

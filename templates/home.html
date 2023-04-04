@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Chart</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Stock Chart</h1>
+    <div id="chart"></div>
+    <script>
+        var chartData = "{{ chart_data|safe }}";
+        var chartDiv = document.getElementById('chart');
+        chartDiv.innerHTML = chartData;
+    </script>
+</body>
+</html>

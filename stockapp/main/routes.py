@@ -8,7 +8,7 @@ main = Blueprint('main', __name__)
 def home():
     if current_user.is_authenticated:
         return render_template('home.html', title="Home", user=current_user)
-    return render_template('home.html', title="Home")
+    return render_template('home.html', title="Home" , user=None)
 
 @main.route('/about')
 def about():
