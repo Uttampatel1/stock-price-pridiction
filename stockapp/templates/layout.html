@@ -6,22 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Boot Strap css Links -->
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <!-- Bootstraps Java Scipts Links -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-
-  <!-- JQuery links  -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!--Added -->
   <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -37,7 +25,12 @@
   <script type="text/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/mychart.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/571.js') }}"></script>
+
+  
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+ <!-- {% if request.cookies.get('dark_mode') == 'enabled' %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}">
+  {% endif %}-->
   {% if title %}
   <title>Stock App - {{ title }}</title>
   {% else %}
@@ -59,6 +52,8 @@
             <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
             <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
             <a class="nav-item nav-link" href="{{ url_for('charts.get_chart') }}">Get Chart</a>
+            <a class="nav-item nav-link" href="{{ url_for('search.stock_service') }}">Stock Servise</a>
+            
           </div>
           <!-- Navbar Right Side -->
           <div class="navbar-nav">
@@ -69,6 +64,7 @@
             <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
             <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
             {% endif %}
+           
             <form class="d-flex" action="#" method="get">
               <input class="form-control me-2 ml-3" type="search" name="q" placeholder="Search ..." aria-label="Search">
               <button class="btn btn-secondary ml-2" type="submit">Search</button>
@@ -116,8 +112,8 @@
     </div>
   </main>
 
-
-  <!-- Optional JavaScript -->
+  
+  <!-- <a class="nav-item nav-link" href="/toggle-dark-mode">Toggle Dark Mode</a> -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

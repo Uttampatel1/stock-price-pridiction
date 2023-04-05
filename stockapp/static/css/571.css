@@ -1,12 +1,8 @@
-body {
-    background-color: #6969AF;
-}
-
 #banner {
     background-color: #EBEBEB;
-    margin-top: 30px;
-    margin-left: 265px;
-    width: 893px;
+    margin-top: 10px;
+    margin-left: 66px;
+    width: 937px;
     border-radius: 5px;
 }
 
@@ -44,7 +40,7 @@ hr {
 
 #ticker_box {
     float: right;
-    margin-right: 555px;
+    margin-right: 521px;
 }
 
 #button_area {
@@ -64,7 +60,7 @@ hr {
     margin-right: 610px;
 }
 
-button {
+.btn1 {
     background-color: #FFFFFF;
     border: 0;
     border-radius: 5px;
@@ -75,20 +71,20 @@ button {
     outline-color: #000000;
 }
 
-button:hover {
+.btn1:hover {
   background-color: #C7C7C7;
 }
-
-input {
+/* 
+#input1{
     border: 0;
     border-radius: 2px;
     height: 23px;
     outline-color: #000000;
-}
+} */
 
 #tab_area {
-    margin-left: 265px;
-    width: 893px;
+    margin-left: 78px;
+    width: 923px;
     margin-top: 20px;
     display: none;
 }
@@ -116,9 +112,10 @@ input {
 }
 
 #data_area {
-    margin-left: 265px;
-    width: 893px;
+    margin-left: 78px;
+    width: 923px;
     margin-top: 20px;
+    margin-bottom: 30px;
     display: none;
 }
 

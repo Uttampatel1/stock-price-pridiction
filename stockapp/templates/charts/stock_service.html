@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'charts/base.html' %}
 {% block content %}
 <div id="banner">
     <div id="main_title">
@@ -16,10 +16,10 @@
     </form>
     <div id="button_area">
         <div id="search_button">
-            <button type="submit" form="ticker_form" value="Submit">Search</button>
+            <button class="btn1" type="submit" form="ticker_form" value="Submit">Search</button>
         </div>
         <div id="clear_button">
-            <button onclick="return clearTickerBox()">Clear</button>
+            <button class="btn1" onclick="return clearTickerBox()">Clear</button>
         </div>
     </div>
 </div>

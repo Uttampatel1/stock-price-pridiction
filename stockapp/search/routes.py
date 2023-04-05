@@ -15,7 +15,7 @@ app_error_msg = "Error : No record has been found, please enter a valid symbol."
 
 @search.route("/stock_servise", methods=["GET"])
 def stock_service():
-    return render_template("stock_service.html")
+    return render_template("charts/stock_service.html")
 
 @search.route("/stock/api/v1.0/outlook/<ticker>", methods=["GET"])
 def company_outlook(ticker):

@@ -29,7 +29,13 @@
     <script src="https://code.highcharts.com/stock/modules/price-indicator.js"></script>
     <script src="https://code.highcharts.com/stock/modules/full-screen.js"></script>
     <script src="https://code.highcharts.com/stock/modules/stock-tools.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/571.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  
+    <script type="text/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mychart.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/571.js') }}"></script>
     {% if title %}
         <title>Stock App - {{ title }}</title>
     {% else %}
@@ -38,40 +44,59 @@
 
 </head>
 <body>
-    <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-          <div class="container">
-            <a class="navbar-brand mr-4" href="/">Stock Preice Prediction APP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-              <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
-                <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
-                <a class="nav-item nav-link" href="{{ url_for('charts.get_chart') }}">Get Chart</a>
-              </div>
-              <!-- Navbar Right Side -->
-              <div class="navbar-nav">
-                {% if current_user.is_authenticated %}
-                  <a class="nav-item nav-link" href="{{ url_for('users.account') }}">Account</a>
-                  <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
-                {% else %}
-                  <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
-                  <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
-                {% endif %}
-                <form class="d-flex" action="#" method="get">
-                  <input class="form-control me-2 ml-3" type="search" name="q" placeholder="Search ..." aria-label="Search">
-                  <button  class="btn btn-secondary ml-2" type="submit">Search</button>
-                  <!-- <img class="nav-item" src="{{ url_for('static', filename='img/search.png') }}"  alt="Search" width="32" height="32"> -->
-                </form>
-              </div>
+   <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Stock Preice Prediction APP</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
+              <a class="nav-item nav-link" href="{{ url_for('charts.get_chart') }}">Get Chart</a>
+              <a class="nav-item nav-link" href="{{ url_for('search.stock_service') }}">Stock Servise</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('users.account') }}">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
+              {% endif %}
+              <form class="d-flex" action="#" method="get">
+                <input class="form-control me-2 ml-3" type="search" name="q" placeholder="Search ..." aria-label="Search">
+                <button  class="btn btn-secondary ml-2" type="submit">Search</button>
+                <!-- <img class="nav-item" src="{{ url_for('static', filename='img/search.png') }}"  alt="Search" width="32" height="32"> -->
+              </form>
             </div>
           </div>
-        </nav>
-      </header>
-
-    {% block content %}{% endblock content %}
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container ">
+      <div class="row">
+        <div class="col-md-10 ml-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  <strong> {{ message }} </strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        </div>
+      </div>
+    </main>
 
 </body>
 </html>
