@@ -8,12 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+   
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/571.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  <!-- Script tags required by Highcharts -->
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/data.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mychart.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/571.js') }}"></script>
       {% if title %}
         <title>Stock App - {{ title }}</title>
     {% else %}

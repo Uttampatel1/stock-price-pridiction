@@ -70,7 +70,7 @@ def get_chart():
         chart_data = json.dumps(chart_data)
         # print(chart_data)
         
-    return render_template('chart.html', chart_data=chart_data)
+    return render_template('charts/chart.html', chart_data=chart_data)
 
 
 #  Demo chart route
