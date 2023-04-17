@@ -34,10 +34,12 @@ def create_app(config_class=Config):
         from stockapp.errors.handlers import errors
         from stockapp.charts.routes import charts
         from stockapp.search.routes import search
+        from stockapp.sentimants.routes import sentimants
         app.register_blueprint(users)
         app.register_blueprint(main)
         app.register_blueprint(errors)
         app.register_blueprint(charts)
         app.register_blueprint(search)
+        app.register_blueprint(sentimants)
         db.create_all()
         return app

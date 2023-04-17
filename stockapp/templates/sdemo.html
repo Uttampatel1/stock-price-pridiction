@@ -1,0 +1,28 @@
+{% extends "charts/base.html" %}
+{% block content %}
+<center>
+	<h1 style="padding:10px">Stock News Sentiment Analyzer</h1>
+
+	<br> <br>
+
+	<h3>Enter a Stock Ticker Symbol to See the Hourly and Daily Sentiment Scores of the Stock</h3>
+
+	<form action="sentiment" method="POST" align="center">
+
+		<b>Stock Ticker Symbol: </b>
+		<input id="text_field" name="ticker" type="text" required>
+		<center><input id="submit_button" type="Submit" class="push_button blue"></center>
+
+	</form>
+	<p>
+		The sentiment is obtained by performing sentimental analysis on recent news headlines using the
+		<a href="https://www.nltk.org/_modules/nltk/sentiment/vader.html">NLTK Sentiment Vader Python
+			library</a>.<br><br>
+		The recent news headlines are obtained from <a href="https://finviz.com">FinViz website</a>.
+		<!-- <br><br>
+		<i>Disclaimer: This page is not meant to represent any form of financial advice.
+			Any investments you make will carry risk so remember to do your due diligence and research before doing
+			so.</i> -->
+	</p>
+</center>
+{% endblock content %}
