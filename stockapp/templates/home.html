@@ -1,12 +1,17 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="container my-5">
-    <h1 class="display-4">Home</h1>
+    <div id="con-1">
     {% if user.is_authenticated %}
     <h2 class="display-5">Welcome to {{ user.username }}</h2>
     {% else %}
     <h2 class="display-5">Welcome to Stock Prediction</h2>
     {% endif %}
     <p class="lead">This is a simple app to keep Prediction of your Stock Preice .</p>
+    <!-- add image to some Bootstrap style -->
+</div>
+    <div id="img1">
+        <img src="{{ url_for('static', filename='img/st1.jpg') }}" class="img-fluid rounded" alt="Responsive image">
+    </div>
 </div>
 {% endblock content %}
